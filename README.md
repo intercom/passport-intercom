@@ -1,4 +1,4 @@
-# Passport-Intercom
+# Passport Intercom
 
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
 with [Intercom](http://intercom.com/) using the OAuth 2.0 API.
