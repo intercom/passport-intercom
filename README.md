@@ -11,7 +11,9 @@ unobtrusively integrated into any application or framework that supports
 
 ## Install
 
-    $ npm install passport-intercom
+```js
+$ npm install passport-intercom
+```
 
 ## Usage
 
@@ -22,17 +24,19 @@ account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, and callback URL.
 
-    passport.use(new IntercomStrategy({
-        clientID: INTERCOM_CLIENT_ID,
-        clientSecret: INTERCOM_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/intercom/callback"
-      },
-      function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ intercomAdminId: profile.id }, function (err, user) {
-          return done(err, user);
-        });
-      }
-    ));
+```js
+passport.use(new IntercomStrategy({
+    clientID: INTERCOM_CLIENT_ID,
+    clientSecret: INTERCOM_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/intercom/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ intercomAdminId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+```
 
 #### Authenticate Requests
 
@@ -42,15 +46,17 @@ authenticate requests.
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
-    app.get('/auth/intercom',
-      passport.authenticate('intercom'));
+```js
+app.get('/auth/intercom',
+  passport.authenticate('intercom'));
 
-    app.get('/auth/intercom/callback',
-      passport.authenticate('intercom', { failureRedirect: '/login' }),
-      function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-      });
+app.get('/auth/intercom/callback',
+  passport.authenticate('intercom', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+```
 
 ## Examples
 
@@ -58,8 +64,10 @@ For a complete, working example, refer to [passport-intercom-example-app](https:
 
 ## Tests
 
-    $ npm install --dev
-    $ make test
+```js
+$ npm install --dev
+$ make test
+```
 
 ## Credits
 
