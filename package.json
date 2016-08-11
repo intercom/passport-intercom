@@ -2,13 +2,14 @@
   "name": "passport-intercom",
   "version": "0.0.1",
   "description": "Intercom authentication strategy for Passport.",
+  "homepage": "http://github.com/intercom/passport-intercom",
   "keywords": ["passport", "intercom", "auth", "authn", "authentication", "identity"],
   "repository": {
     "type": "git",
     "url": "git://github.com/intercom/passport-intercom.git"
   },
   "bugs": {
-    "url": "http://github.com/intercom/passport-intercom/issues"
+    "url": "https://github.com/intercom/passport-intercom/issues"
   },
   "author": {
     "name": "Rory Hughes",
