@@ -9,6 +9,8 @@ unobtrusively integrated into any application or framework that supports
 [Connect](http://www.senchalabs.org/connect/)-style middleware, including
 [Express](http://expressjs.com/).
 
+[Example Application](https://github.com/intercom/passport-intercom-example-app)
+
 ## Install
 
 ```js
