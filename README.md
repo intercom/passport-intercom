@@ -64,7 +64,7 @@ For a complete, working example, refer to [passport-intercom-example-app](https:
 
 ## Tests
 
-```js
+```bash
 $ npm install --dev
 $ make test
 ```
