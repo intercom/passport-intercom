@@ -17,6 +17,8 @@ unobtrusively integrated into any application or framework that supports
 $ npm install passport-intercom
 ```
 
+[NPM package](https://www.npmjs.com/package/passport-intercom)
+
 ## Usage
 
 #### Configure Strategy
