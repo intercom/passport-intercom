@@ -36,6 +36,7 @@ vows.describe('IntercomStrategy').addBatch({
             "id": "123456", \
             "email": "rory@gmail.com", \
             "name": "Rory Hughes", \
+            "email_verified": true, \
             "app": { \
               "type": "app", \
               "id_code": "abcd1234", \
@@ -94,6 +95,65 @@ vows.describe('IntercomStrategy').addBatch({
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
         callback(new Error('something-went-wrong'));
+      }
+
+      return strategy;
+    },
+
+    'when told to load user profile': {
+      topic: function(strategy) {
+        var self = this;
+        function done(err, profile) {
+          self.callback(err, profile);
+        }
+
+        process.nextTick(function () {
+          strategy.userProfile('access-token', done);
+        });
+      },
+
+      'should error' : function(err, req) {
+        assert.isNotNull(err);
+      },
+      'should wrap error in InternalOAuthError' : function(err, req) {
+        assert.equal(err.constructor.name, 'InternalOAuthError');
+      },
+      'should not load profile' : function(err, profile) {
+        assert.isUndefined(profile);
+      },
+    },
+  },
+
+  'strategy when loading user profile with unverified email': {
+    topic: function() {
+      var strategy = new IntercomStrategy({
+          clientID: 'ABC123',
+          clientSecret: 'secret'
+        },
+        function() {});
+
+      // mock
+      strategy._oauth2.get = function(url, accessToken, callback) {
+        var body = ' \
+          { \
+            "type": "admin", \
+            "id": "123456", \
+            "email": "rory@gmail.com", \
+            "name": "Rory Hughes", \
+            "email_verified": false, \
+            "app": { \
+              "type": "app", \
+              "id_code": "abcd1234", \
+              "created_at": 1470823665, \
+              "secure": true \
+            }, \
+            "avatar": { \
+              "type": "avatar", \
+              "image_url": "https://static.intercomassets.com/avatars/123/square_128/456.jpg" \
+            } \
+          } \
+        ';
+        callback(null, body, undefined);
       }
 
       return strategy;
