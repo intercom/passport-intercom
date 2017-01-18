@@ -1,9 +1,16 @@
 {
   "name": "passport-intercom",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Intercom authentication strategy for Passport.",
   "homepage": "http://github.com/intercom/passport-intercom",
-  "keywords": ["passport", "intercom", "auth", "authn", "authentication", "identity"],
+  "keywords": [
+    "passport",
+    "intercom",
+    "auth",
+    "authn",
+    "authentication",
+    "identity"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/intercom/passport-intercom.git"
@@ -27,5 +34,7 @@
   "scripts": {
     "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
   },
-  "engines": { "node": ">= 0.4.0" }
+  "engines": {
+    "node": ">= 0.4.0"
+  }
 }
